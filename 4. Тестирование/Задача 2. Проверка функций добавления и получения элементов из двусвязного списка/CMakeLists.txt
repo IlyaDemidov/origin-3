@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 3.8)
+project ("Task_4.2")
+add_subdirectory(D:\\Catch2 Catch2-build)
+add_executable (Task_4.2 "Task_4.2"  )
+target_link_libraries(Task_4.2 PRIVATE Catch2::Catch2)
