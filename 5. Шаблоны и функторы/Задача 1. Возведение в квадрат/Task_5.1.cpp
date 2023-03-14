@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
 
-void print_vector(std::vector<int> x)
+template <typename T>
+void print_vector(std::vector<T> x)
 {
   for (int i = 0; i < x.size(); i++)
   {
@@ -16,21 +17,21 @@ T my_sgr(T x)
     return x * x;
 }
 
-template<>
-std::vector<int> my_sgr(std::vector<int> x)
+template<typename T>
+std::vector<T> my_sgr(std::vector<T> x)
 {
-    std::vector<int>y;
+    std::vector<T>y;
     for (const int& i : x) { y.push_back(i * i); }
     return y;
 }
 
 int main()
 {
-    int var{ 4 };
+    double var{ 4 };
     std::cout << "[IN]: " << var << "\n";
     std::cout << "[OUT]: " << my_sgr(var) << "\n";
     
-    std::vector<int>vec{ -1, 4, 8 };
+    std::vector<double>vec{ -1, 4, 8 };
     std::cout << "[IN]: ";
     print_vector(vec);
     
