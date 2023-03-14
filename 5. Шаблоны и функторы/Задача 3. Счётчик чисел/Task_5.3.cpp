@@ -10,9 +10,13 @@ public:
     const int& get_sum() const { return sum; }
     const int& get_count() const { return count; }
 
-    void operator () (const std::vector<int>& vec)
+    void operator () (const int& i)
     {
-        std::for_each(vec.begin(), vec.end(), [this](const int& x) {if (x % 3 == 0) { set_count(); set_sum(x); } });
+        if (i % 3 == 0)
+        {
+            set_count();
+            set_sum(i);
+        }
     }
 
 private:
@@ -31,10 +35,11 @@ int main()
 
     std::vector<int> vec{ 4, 1, 3, 6, 25, 54 };
 
-    c(vec);
-
     std::cout << "[IN]: ";
     for (const int& i : vec) std::cout << i << " ";
+
+    c = std::for_each(vec.begin(), vec.end(), c);
+
 
     std::cout << "\n[OUT]: get_sum() = " << c.get_sum() << '\n';
     std::cout << "[OUT]: get_count() = " << c.get_count() << '\n';
